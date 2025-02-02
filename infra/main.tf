@@ -101,7 +101,7 @@ resource "aws_sfn_state_machine" "example_sfn" {
       ProcessData = {
         Type = "Task"
         Resource = aws_lambda_function.example_lambda.arn
-        End = true
+        Next = "SuccessAction"  # Mudei de End = true para Next
         Retry = [
           {
             ErrorEquals = ["States.TaskFailed"]
@@ -116,6 +116,17 @@ resource "aws_sfn_state_machine" "example_sfn" {
             Next = "FailState"
           }
         ]
+      }
+      SuccessAction = {        # Novo estado para ação de sucesso
+        Type = "Task"
+        Resource = "arn:aws:states:::lambda:invoke"  # Substitua pelo ARN do seu recurso
+        Parameters = {
+          //FunctionName = aws_lambda_function.success_lambda.arn  # Substitua pela sua função
+          Payload = {
+            "Input.$": "$"     # Passa todo o input anterior
+          }
+        }
+        End = true
       }
       FailState = {
         Type = "Fail"
