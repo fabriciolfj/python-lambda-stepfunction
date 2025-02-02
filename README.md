@@ -19,3 +19,7 @@ curl -X POST https://seu-gwt/prod/trigger \
   -d '{"input_value": 10}'
 ```
 - obs: esse projeto não tem por objetivo ser complexo, e sim demonstrar a integração
+- para gerar o arquivo zip
+```
+python build.py
+```
