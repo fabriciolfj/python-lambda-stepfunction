@@ -26,10 +26,6 @@ python build.py
 
 # Detalhes 
 ```
-Ah! Agora vou detalhar os tipos de estados (states) disponíveis nas Step Functions. Vou criar um diagrama e depois explicar cada um.
-
-
-
 1. **Task State**:
    ```json
    {
