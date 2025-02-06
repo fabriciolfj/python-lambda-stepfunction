@@ -25,7 +25,7 @@ python build.py
 ```
 
 # Detalhes 
-```
+
 1. **Task State**:
    ```json
    {
